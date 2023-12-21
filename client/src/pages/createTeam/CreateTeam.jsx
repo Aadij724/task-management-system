@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import "./NewProject.scss"
+import "./CreateTeam.scss"
 
-const NewProject = () => {
+const CreateTeam = () => {
   return (
     <div className='home'>
         <div className='nav-nb'>
@@ -19,4 +19,4 @@ const NewProject = () => {
   )
 }
 
-export default NewProject
+export default CreateTeam

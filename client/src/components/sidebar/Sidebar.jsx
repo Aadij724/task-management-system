@@ -5,6 +5,8 @@ import InsightsIcon from '@mui/icons-material/Insights';
 import Groups3Icon from '@mui/icons-material/Groups3';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import HomeIcon from '@mui/icons-material/Home';
+import AddIcon from '@mui/icons-material/Add';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import "./Sidebar.scss"
 import { Link } from 'react-router-dom';
 
@@ -17,11 +19,11 @@ const Sidebar = () => {
         <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" id='eeee1'>
             <div className="nav nav-pills flex-column mb-auto" id='eeee3'>
             <Link to={"/"} style={{textDecoration: "none"}}>
-                <li className='li-item' style={{textDecoration: "none"}} onClick={()=>{setTab('')}} >
+                <li className='li-item' onClick={()=>{setTab('')}}>
                     <a className={ tab=="" ? "nav-link active" : "nav-link link-dark"}>
                     {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid"></use></svg> */}
-                    <HomeIcon className="bi me-2" height="15px" width="16px"/>
-                    Home
+                    <DashboardIcon className="bi me-2" height="15px" width="16px"/>
+                    My Dashboard
                     </a>
                 </li>
             </Link>
@@ -43,6 +45,24 @@ const Sidebar = () => {
                     </a>
                 </li>
             </Link>
+            <Link to={"/team/new"} style={{textDecoration: "none"}}>
+                <li className='li-item' onClick={()=>{setTab('createteam')}}>
+                    <a className={ tab=="createteam" ? "nav-link active" : "nav-link link-dark"} aria-current="page">
+                        {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home"></use></svg> */}
+                        <AddIcon className="bi me-2" width="16" height="16"/>
+                        Create Team
+                    </a>
+                </li>
+            </Link>
+            <Link to={"/team"} style={{textDecoration: "none"}}>
+                <li className='li-item' onClick={()=>{setTab('team')}}>
+                    <a className={ tab=="team" ? "nav-link active" : "nav-link link-dark"} aria-current="page">
+                        {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home"></use></svg> */}
+                        <Groups3Icon className="bi me-2" width="16" height="16"/>
+                        Team
+                    </a>
+                </li>
+            </Link>
             <Link to={"/teamstats"} style={{textDecoration: "none"}}>
                 <li className='li-item' onClick={()=>{setTab('teamstats')}}>
                     <a className={ tab=="teamstats" ? "nav-link active" : "nav-link link-dark"} aria-current="page">
@@ -52,53 +72,7 @@ const Sidebar = () => {
                     </a>
                 </li>
             </Link>
-                <li >
-                    <a className="nav-link link-dark">
-                    {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table"></use></svg> */}
-                    <Groups3Icon className="bi me-2" width="16" height="16"/>
-                    Projects
-                    <div >
-                        <ul className="list-unstyled fw-normal pb-1 small">
-                            <Link to={"/projects/new"} style={{textDecoration: "none"}}>
-                            <li className='li-item' onClick={()=>{setTab('newproject')}}>
-                                {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table"></use></svg> */}
-                                <a href="#" className={"nav-link  d-inline-flex text-decoration-none " + (tab=="newproject" ? "active" : "line-dark") }>
-                                <AccountTreeIcon className="bi me-2" width="10px" height="10px"/>
-                                New Project
-                                </a>
-                            </li>
-                            </Link>
-                            <Link to={"/projects/1"} style={{textDecoration: "none"}}>
-                            <li className='li-item' onClick={()=>{setTab('project1')}}>
-                                {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table"></use></svg> */}
-                                <a href="#" className={"nav-link d-inline-flex text-decoration-none " + (tab=="project1" ? "active" : "line-dark") }>
-                                <AccountTreeIcon className="bi me-2" width="10px" height="10px"/>
-                                Project 1
-                                </a>
-                            </li>
-                            </Link>
-                            <Link to={"/projects/2"} style={{textDecoration: "none"}}>
-                            <li className='li-item' onClick={()=>{setTab('project2')}}>
-                                {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table"></use></svg> */}
-                                <a href="#" className={"nav-link d-inline-flex text-decoration-none " + (tab=="project2" ? "active" : "line-dark") }>
-                                <AccountTreeIcon className="bi me-2" width="10px" height="10px"/>
-                                Project 2
-                                </a>
-                            </li>
-                            </Link>
-                            <Link to={"/projects/3"} style={{textDecoration: "none"}}>
-                            <li className='li-item' onClick={()=>{setTab('project3')}}>
-                                {/* <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table"></use></svg> */}
-                                <a href="#" className={"nav-link d-inline-flex text-decoration-none " + (tab=="project3" ? "active" : "line-dark") }>
-                                <AccountTreeIcon className="bi me-2" width="10px" height="10px"/>
-                                Project 3
-                                </a>
-                            </li>
-                            </Link>
-                        </ul>
-                    </div>
-                    </a>
-                </li>
+                
                 
                 
             </div>
