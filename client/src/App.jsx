@@ -45,8 +45,10 @@ function App() {
               <Route path="edit" element={user ? <EditProfile/> : <Navigate to={"/login"}/>} />
             </Route>
             <Route path="team">
-              <Route index element={user ? <Team/>: <Navigate to={"/login"}/>} />
-              <Route path="new" element={user ? <CreateTeam/> : <Login/>} />
+              <Route index element={<Team/>} />
+              {/* <Route path="new" element={user ? <CreateTeam/> : <Login/>} /> */}
+              
+              <Route path="new" element={ <CreateTeam/>} />
             </Route>
             <Route path="mystats" element={user ? <MyStats/> : <Login/> } />
             <Route path="teamstats" element={user ? <TeamStats/> : <Login/> } />

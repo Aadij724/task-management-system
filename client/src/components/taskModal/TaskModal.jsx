@@ -4,29 +4,31 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-const TaskModal = (props) => {
+const TaskModal = ({show,onHide,info}) => {
   return (
     <Modal 
-        {...props}
+        show={show}
+        onHide={onHide}
         size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          {info && info.title}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        
         <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
+          {info && info.details}
         </p>
+        <h5>Status - {info && info.status}</h5>
+        {info?.assignedTo=="none" && <h5>Assigned to - {info.assignedTo}</h5>}
+        {/* <h4>Status - {info?.assignedTo && info.assignedTo}</h4> */}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   )
