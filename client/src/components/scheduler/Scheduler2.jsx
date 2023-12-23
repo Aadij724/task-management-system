@@ -5,7 +5,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
-const Scheduler2 = () => {
+const Scheduler2 = ({page}) => {
+
 
   const taskColor = {
       "meeting": "#D50000",
@@ -31,7 +32,7 @@ const Scheduler2 = () => {
 
       var hourList = [];
 
-      for (var i = 0; i < 24; i++) {
+      for (var i = 9; i < 18; i++) {
         var startTime = i % 12 === 0 ? 12 : i % 12; // Convert 0 to 12
         var amPm = i < 12 ? 'AM' : 'PM';
 
@@ -182,8 +183,8 @@ const Scheduler2 = () => {
 
 
     var taskOrder1 = {
-      '00:00 - 8:00': "sleep",
-      '8:00 - 9:00': "bath",
+      // '00:00 - 8:00': "sleep",
+      // '8:00 - 9:00': "bath",
       '9:00 - 10:00': "breakfast",
       '10:00 - 12:00': "meeting",
       '12:00 - 13:00': "break",
@@ -191,50 +192,50 @@ const Scheduler2 = () => {
       '15:00 - 16:00': "lunch",
       '16:00 - 17:00': "habit",
       '17:00 - 18:00': "project",
-      '18:00 - 19:00': "break",
-      '19:00 - 20:00': "gym",
-      '20:00 - 21:00': "dinner",
-      '21:00 - 22:00': "break",
-      '22:00 - 00:00': "sleep",
+      // '18:00 - 19:00': "break",
+      // '19:00 - 20:00': "gym",
+      // '20:00 - 21:00': "dinner",
+      // '21:00 - 22:00': "break",
+      // '22:00 - 00:00': "sleep",
     };
 
     const taskList1 = [];
 
     var taskOrder2 = {
-      '00:00 - 07:00': "sleep",
-      '07:00 - 08:30': "bath",
-      '08:30 - 09:30': "breakfast",
-      '09:30 - 10:00': "free", // Non-specific time marked as free
+      // '00:00 - 07:00': "sleep",
+      // '07:00 - 08:30': "bath",
+      // '08:30 - 09:00': "breakfast",
+      '09:00 - 10:00': "free", // Non-specific time marked as free
       '10:00 - 12:00': "meeting",
       '12:00 - 13:00': "break",
       '13:00 - 15:00': "free", // Marking 1:00 PM to 3:00 PM as Free
       '15:00 - 16:00': "lunch",
       '16:00 - 17:00': "habit",
       '17:00 - 18:00': "habit",
-      '18:00 - 19:00': "break",
-      '19:00 - 20:00': "gym",
-      '20:00 - 21:00': "dinner",
-      '21:00 - 22:00': "break",
-      '22:00 - 00:00': "sleep",
+      // '18:00 - 19:00': "break",
+      // '19:00 - 20:00': "gym",
+      // '20:00 - 21:00': "dinner",
+      // '21:00 - 22:00': "break",
+      // '22:00 - 00:00': "sleep",
     };
     
     const taskList2 = [];
 
     var taskOrder3 = {
-      '00:00 - 07:00': "sleep",
-      '07:00 - 08:30': "bath",
-      '08:30 - 09:30': "breakfast",
-      '09:30 - 10:00': "free",
+      // '00:00 - 07:00': "sleep",
+      // '07:00 - 08:30': "bath",
+      // '08:30 - 09:00': "breakfast",
+      '09:00 - 10:00': "free",
       '10:00 - 12:00': "meeting",
       '12:00 - 13:30': "break", // Extended Tea Break to 1.5 hours
       '13:30 - 15:00': "free",
       '15:00 - 16:30': "lunch", // Extended Lunch to 1.5 hours
       '16:30 - 18:00': "habit",
-      '18:00 - 19:00': "break",
-      '19:00 - 20:00': "gym", // Reduced Gym to 1 hour
-      '20:00 - 21:00': "dinner",
-      '21:00 - 22:00': "break",
-      '22:00 - 00:00': "sleep",
+      // '18:00 - 19:00': "break",
+      // '19:00 - 20:00': "gym", // Reduced Gym to 1 hour
+      // '20:00 - 21:00': "dinner",
+      // '21:00 - 22:00': "break",
+      // '22:00 - 00:00': "sleep",
     };
   
     const taskList3 = [];
@@ -314,7 +315,7 @@ const Scheduler2 = () => {
 
   ////////////////////////////////////////////////////////
 
-  const [scheduleType, setScheduleType ] = useState('team')
+  const [scheduleType, setScheduleType ] = useState(page)
 
   return (
     <div className='scheduler'>

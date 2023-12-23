@@ -9,10 +9,16 @@ import AddIcon from '@mui/icons-material/Add';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import "./Sidebar.scss"
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/esm/Button';
 
 const Sidebar = () => {
 
     const [tab,setTab] = useState('dashboard')
+
+    const logout = ()=>{
+        window.open("http://localhost:6005/logout","_self");
+        setUserdata({});
+    }
 
   return (
     <div className='side-nb'>
@@ -78,17 +84,7 @@ const Sidebar = () => {
             </div>
             <hr/>
             <div className="dropdown" id='eeee4'>
-                <a href="#" className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                    <strong>mdo</strong>
-                </a>
-                <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                    <li><a className="dropdown-item" href="#">New project...</a></li>
-                    <li><a className="dropdown-item" href="#">Settings</a></li>
-                    <li><a className="dropdown-item" href="#">Profile</a></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="#">Sign out</a></li>
-                </ul>
+                <Button variant="danger" onClick={logout}>Logout</Button>
             </div>
         </div>
     </div>

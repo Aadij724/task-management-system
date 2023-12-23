@@ -8,39 +8,27 @@ import newRequest from "../../../utils/newRequest.util";
 
 function Login() {
   
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e)=>{
-    
+  const loginwithgoogle = ()=>{
+    window.open("http://localhost:6005/auth/google/callback","_self")
   }
-
-  const googleAuth = async () => {
-    window.open(
-      `http://localhost:8800/auth/google`,
-      "_self"
-    )
-  }
+  
 
   return (
     <div className="login">
-      <form onSubmit={handleSubmit}>
+      <form >
         <h1>Sign in</h1>
         <label htmlFor="">Username</label>
-        <input name="username" type="text" placeholder="johndoe" onChange={e=>{setUsername(e.target.value)}} />
+        <input name="username" type="text" placeholder="johndoe" />
 
         <label htmlFor="">Password</label>
         <input
           name="password"
           type="password"
           placeholder="johndoe@gmail.com"
-          onChange={e=>{setPassword(e.target.value)}}
         />
         <button type="submit">Login</button>
       </form>
-      <button className="btnGoogle" onClick={googleAuth}>
+      <button className="btnGoogle" onClick={loginwithgoogle}>
           <GoogleIcon className="icon"/>
           <span> Sign In With Google</span>
       </button>

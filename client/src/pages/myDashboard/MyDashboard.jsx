@@ -5,6 +5,7 @@ import "./MyDashboard.scss"
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Tasks from '../../components/tasks/Tasks'
+import Button from 'react-bootstrap/esm/Button'
 
 const MyDashboard = () => {
 
@@ -62,7 +63,11 @@ const MyDashboard = () => {
             </div>
           </div>
           <div className='right'>
-              <Scheduler2 />
+              <div className='btns-right-abv'>
+                <Button variant="primary">Refresh Schedule using AI</Button>
+                <Button variant="success">Integrate on Google Calender</Button>
+              </div>
+              <Scheduler2 page="personel" />
           </div>
         </div>
       </div>

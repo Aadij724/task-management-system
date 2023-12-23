@@ -1,6 +1,6 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
-import EditProfile from './pages/editProfile/EditProfile'
+import EditProfile from './pages/editProfile/EditProfile.jsx'
 import Login from './pages/login/Login.jsx'
 import MyStats from './pages/myStats/MyStats.jsx'
 import Profile from './pages/profile/Profile.jsx'
@@ -14,44 +14,42 @@ import CreateTeam from './pages/createTeam/CreateTeam.jsx'
 
 function App() {
 
-  const [user,setUser] = useState(null);
+  
 
-  const getUser = async () => {
-    try {
-      const url = `http://localhost:8800/api/auth/login/success`;
-      const { data } = await axios.get(url, {withCredentials:true});
-      setUser(data.user._json);
-    } catch (err) {
-      console.log(err);
+  const [userdata, setUserdata] = useState({});
+    console.log("response", userdata)
+
+    const getUser = async () => {
+        try {
+            const response = await axios.get("http://localhost:6005/login/success", { withCredentials: true });
+            setUserdata(response.data.user)
+        } catch (error) {
+            console.log("error", error)
+        }
     }
-  }
 
-  useEffect(()=>{
-    getUser();
-  }, []);
+    useEffect(() => {
+        getUser()
+    }, [])
 
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            {/* <Route index element={user? <Home/>: <Navigate to={"/login"}/> } /> */}
-            <Route index element={<MyDashboard/>} />
-            <Route path="signup" element={user ? <MyDashboard/>: <SignUp/>} />
-            <Route path="login" element={user ? <MyDashboard/> : <Login/>} />
+            <Route index element={userdata ? <MyDashboard/> : <Login/>} />
+            <Route path="signup" element={userdata ? <MyDashboard/>: <SignUp/>} />
+            <Route path="login" element={<Login/>} />
             <Route path="profile">
-              {/* <Route index element={user ? <Profile/> : <Navigate to={"/login"}/> } /> */}
-              <Route index element={<Profile/>  } />
-              <Route path="edit" element={user ? <EditProfile/> : <Navigate to={"/login"}/>} />
+              <Route index element={userdata ? <Profile/> : <Navigate to={"/login"} /> } />
+              <Route path="edit" element={userdata ? <EditProfile/> : <Navigate to={"/login"}/>} />
             </Route>
             <Route path="team">
-              <Route index element={<Team/>} />
-              {/* <Route path="new" element={user ? <CreateTeam/> : <Login/>} /> */}
-              
-              <Route path="new" element={ <CreateTeam/>} />
+              <Route index element={userdata ? <Team/> : <Navigate to={"/login"}/>} />
+              <Route path="new" element={userdata ? <CreateTeam/>:<Navigate to={"/login"}/>} />
             </Route>
-            <Route path="mystats" element={user ? <MyStats/> : <Login/> } />
-            <Route path="teamstats" element={user ? <TeamStats/> : <Login/> } />
+            <Route path="mystats" element={userdata ? <MyStats/> : <Navigate to={"/login"}/> } />
+            <Route path="teamstats" element={userdata ? <TeamStats/> : <Navigate to={"/login"}/> } />
           </Route>
         </Routes>
       </BrowserRouter>
